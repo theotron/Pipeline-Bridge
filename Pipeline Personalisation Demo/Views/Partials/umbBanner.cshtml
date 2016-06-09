@@ -1,0 +1,33 @@
+﻿@inherits UmbracoTemplatePage
+@using PipelineApp.Services
+
+@if (CurrentPage.HideBanner == false)
+{
+    <!-- Banner -->
+	<section id="banner">
+		<header>
+			<h2>@Umbraco.Field("bannerHeader")</h2>
+		</header>
+		@if (HttpContext.Current.Request.Cookies["PipelineContactId"] != null)
+        {
+            var contactId = int.Parse(HttpContext.Current.Request.Cookies["PipelineContactId"].Value);
+            var contact = new PipelineService().GetContactById(contactId);
+
+            if (contact != null)
+            {
+                string message = !string.IsNullOrEmpty(contact.GetPropertyValue("message")) ?
+                    contact.GetPropertyValue("message") :
+                    contact.Organisations.FirstOrDefault(x => !string.IsNullOrEmpty(x.GetPropertyValue("message").ToString())).GetPropertyValue("message");
+
+                @message
+            }
+        }
+        else
+        {
+            @Umbraco.Field("bannerText")
+        }        
+		<footer>
+			<a href="#first" class="button style2 scrolly">@Umbraco.Field("bannerLinkText")</a>
+		</footer>
+	</section>
+}

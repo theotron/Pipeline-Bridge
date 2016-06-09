@@ -1,0 +1,25 @@
+﻿<div class="umb-panel" ng-controller="UmbracoPersonalisationGroups.PipelineGroupPersonalisationGroupCriteriaController">
+    <div class="umb-panel-body no-header with-footer compact">
+        <p>Please select the groups for which this group will be valid:</p>
+        <ul class="unstyled">
+            <li ng-repeat="org in orgs | orderBy: org.Name">
+                <label class="checkbox">
+                    <input type="checkbox" ng-click="toggle(org.Id)" ng-checked="isSelected(org.Id)" />
+                    {{org.Name}}
+                </label>
+            </li>
+        </ul>
+    </div>
+    <div class="umb-panel-footer">
+        <div class="umb-el-wrap umb-panel-buttons">
+            <div class="btn-toolbar umb-btn-toolbar pull-right">
+                <a href ng-click="close()" class="btn btn-link">
+                    <localize key="general_cancel">Cancel</localize>
+                </a>
+                <a href ng-click="saveAndClose()" class="btn btn-primary">
+                    <localize key="buttons_save">Save</localize>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

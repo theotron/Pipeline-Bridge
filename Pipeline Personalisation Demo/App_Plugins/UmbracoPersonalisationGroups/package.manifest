@@ -1,0 +1,6 @@
+﻿{
+    javascript: [
+        '~/App_Plugins/UmbracoPersonalisationGroups/GetResourceForCriteria/PipelineGroup/definition.editor.controller.js',
+        '~/App_Plugins/UmbracoPersonalisationGroups/GetResourceForCriteria/PipelineGroup/definition.translator.js'
+    ]    
+}
