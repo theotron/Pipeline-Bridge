@@ -14,9 +14,8 @@ namespace GrowCreate.PipelineIntegration
         {
             if (!contact.OrganisationIds.Contains(OrganisationId.ToString()))
             {
-                contact.OrganisationIds =
-                    (!string.IsNullOrEmpty(contact.OrganisationIds) ? contact.OrganisationIds + "," : "")
-                    + OrganisationId.ToString();
+                contact.OrganisationIds = (!string.IsNullOrEmpty(contact.OrganisationIds) ?
+                    contact.OrganisationIds + "," : "") + OrganisationId.ToString();
                 contact.Save();
             }            
         }

@@ -26,7 +26,7 @@ namespace GrowCreate.PipelineIntegration
             if (!string.IsNullOrEmpty(contact.OrganisationIds) && !contact.OrganisationIds.Contains(b2BgroupId.ToString()))
             {
                 // Add to B2B Group
-                contact.AddOrganisation(b2BgroupId);
+                //contact.AddOrganisation(b2BgroupId);
             }
         }
 
