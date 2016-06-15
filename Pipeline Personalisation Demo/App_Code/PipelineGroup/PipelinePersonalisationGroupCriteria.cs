@@ -36,14 +36,14 @@
                 var definedGroup = JsonConvert.DeserializeObject<int[]>(definition);
 
                 // Check if there is a Pipeline cookie
-                if (HttpContext.Current.Request.Cookies["PipelineContactId"] != null)
+                if (definedGroup.Any() && HttpContext.Current.Request.Cookies["PipelineContactId"] != null)
                 {
                     // Get the Pipeline contact
                     var contactId = int.Parse(HttpContext.Current.Request.Cookies["PipelineContactId"].Value);
                     var contact = new ContactService().GetById(contactId);
 
                     // Check if any of their Organisation is of a type in our criteria settings
-                    if (contact != null && contact.Organisations.Any())
+                    if (contact != null && contact.Organisations != null && contact.Organisations.Any())
                     {
                         return definedGroup.Intersect(contact.Organisations.Select(x => x.Id)).Any();
                     }

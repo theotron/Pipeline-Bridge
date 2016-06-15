@@ -10,7 +10,7 @@
         var contactId = int.Parse(HttpContext.Current.Request.Cookies["PipelineContactId"].Value);
         var contact = new PipelineService().GetContactById(contactId);
 
-        if (contact != null)
+        if (contact != null && contact.Organisations != null)
         {
             bannerHeader = contact.GetPropertyValue("message") != null ?
                 contact.GetPropertyValue("message") : bannerHeader;
